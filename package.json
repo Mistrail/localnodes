@@ -1,0 +1,31 @@
+{
+  "name": "localnodes",
+  "version": "1.0.0",
+  "description": "Localnodes is simple wrapper over localStorage. Includes subscriptions & incremental recording",
+  "keywords": [
+    "localStorage",
+    "browser",
+    "client",
+    "subscription",
+    "incremental"
+  ],
+  "homepage": "https://github.com/Mistrail/localnodes#readme",
+  "bugs": {
+    "url": "https://github.com/Mistrail/localnodes/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mistrail/localnodes.git"
+  },
+  "license": "GPL-3.0-or-later",
+  "author": "mistrail <frigus.ventus@gmail.com>",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "mocha LocalNodes.test.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  }
+}
