@@ -27,5 +27,8 @@
   },
   "devDependencies": {
     "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "localnodes": "github:Mistrail/localnodes"
   }
 }
