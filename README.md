@@ -3,7 +3,7 @@
 
 # Как установить
 ```bash
-npm install https://github.com/Mistrail/localnodes.git
+npm install https://github.com/Mistrail/localnodes.git#main
 ```
 ```js
 import {LocalNodes} from "localnodes/LocalNodes"

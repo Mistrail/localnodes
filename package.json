@@ -20,14 +20,26 @@
   "license": "GPL-3.0-or-later",
   "author": "mistrail <frigus.ventus@gmail.com>",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
   "main": "dist/index.js",
   "scripts": {
-    "ci": "npm run build",
-    "build": "tsc"
+    "ci": "npm run build & npm run check-exports & npm run lint",
+    "lint": "tsc",
+    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm"
   },
   "devDependencies": {
-    "typescript": "^5.8.2"
+    "@arethetypeswrong/cli": "^0.17.4",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
   },
   "dependencies": {
     "localnodes": "github:Mistrail/localnodes"
