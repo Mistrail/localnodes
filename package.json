@@ -1,6 +1,6 @@
 {
   "name": "localnodes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Localnodes is simple wrapper over localStorage. Includes subscriptions & incremental recording",
   "keywords": [
     "localStorage",
@@ -32,7 +32,7 @@
   },
   "main": "dist/index.js",
   "scripts": {
-    "ci": "npm run build & npm run check-exports & npm run lint",
+    "ci": "npm run lint & npm run check-exports",
     "lint": "tsc",
     "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm"
   },
