@@ -21,7 +21,8 @@
   "author": "mistrail <frigus.ventus@gmail.com>",
   "type": "module",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "exports": {
     "./package.json": "./package.json",
