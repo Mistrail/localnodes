@@ -19,11 +19,12 @@
   },
   "license": "GPL-3.0-or-later",
   "author": "mistrail <frigus.ventus@gmail.com>",
-  "type": "commonjs",
-  "main": "index.js",
+  "type": "module",
+  "files": ["dist"],
+  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "test": "mocha LocalNodes.test.js"
+    "ci": "npm run build",
+    "build": "tsc"
   },
   "devDependencies": {
     "typescript": "^5.8.2"
