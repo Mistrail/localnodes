@@ -6,7 +6,7 @@
 npm install https://github.com/Mistrail/localnodes.git#main
 ```
 ```js
-import {LocalNodes} from "localnodes/LocalNodes"
+import {LocalNodes} from "localnodes"
 ```
 
 # Как юзать
