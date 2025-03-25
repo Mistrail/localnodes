@@ -6,9 +6,19 @@ type NodeRecord = {
 export class LocalNodes {
     private static events: { [key: string]: Event } = {}
     private static eventTypeSx: string = "NodeChange"
+    public static silent: boolean = false
+
+    static log(...args: unknown[]): void {
+        if(!LocalNodes.silent){
+            console.log(...args)
+        }        
+    }
 
     static truncate(): void {
         localStorage.clear()
+        for (const nodeName in LocalNodes.events) {
+            LocalNodes.unsubscribe(nodeName);
+        }
       }
 
     static addNode(nodeName: string, value: unknown = {}): void {
@@ -36,7 +46,7 @@ export class LocalNodes {
 
         const eventType: string = LocalNodes.getEventType(nodeName)
         if (!LocalNodes.events[nodeName]) {
-            console.error(`event.write [${eventType}] not initiated`)
+            LocalNodes.log(`event.write [${eventType}] not initiated`)
         } else {
             localStorage.setItem(nodeName, JSON.stringify({ current, prev }))
             const event: Event = LocalNodes.events[nodeName];
@@ -48,9 +58,9 @@ export class LocalNodes {
         const eventType: string = LocalNodes.getEventType(nodeName)
         const listener = cb ? (ev: Event) => cb(ev, LocalNodes.read(nodeName)) : () => {};
         if (!LocalNodes.events[nodeName]) {
-            console.error(`event.subscribe: [${eventType}] not initiated`)
+            LocalNodes.log(`event.subscribe: [${eventType}] not initiated`)
         } else {
-            console.log(`subscribed to: [${eventType}]`)
+            LocalNodes.log(`subscribed to: [${eventType}]`)
             document.addEventListener(eventType, listener)
         }
     }
@@ -59,17 +69,17 @@ export class LocalNodes {
         const eventType: string = LocalNodes.getEventType(nodeName)
         const listener = cb ? (ev: Event) => cb(ev, LocalNodes.read(nodeName)) : () => {};
         if (!LocalNodes.events[nodeName]) {
-            console.error(`event.unsubscribe: [${eventType}] not initiated`)
+            LocalNodes.log(`event.unsubscribe: [${eventType}] not initiated`)
         } else {
             document.removeEventListener(eventType, listener)
-            console.log(`subscription to [${eventType}] cancelled`)
+            LocalNodes.log(`subscription to [${eventType}] cancelled`)
         }
     }
 
     static clear(nodeName: string): void{
         localStorage.removeItem(nodeName)
         LocalNodes.unsubscribe(nodeName);
-        console.warn(`node [${nodeName}] removed`)
+        LocalNodes.log(`node [${nodeName}] removed`)
     }
 
 }

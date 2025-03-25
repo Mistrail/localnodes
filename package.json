@@ -1,6 +1,6 @@
 {
   "name": "localnodes",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Localnodes is simple wrapper over localStorage. Includes subscriptions & incremental recording",
   "keywords": [
     "localStorage",
